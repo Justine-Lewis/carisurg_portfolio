@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and credentials
+.env
+.env.*
+
+# Data files - do not commit clinical datasets
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+*.xls
+*.json
+*.parquet
+*.db
+*.sqlite
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
