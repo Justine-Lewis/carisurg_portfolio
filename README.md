@@ -25,6 +25,8 @@ carisurg-portfolio/
 ├── docs/
 │   ├── Week-1-Preliminary-Proposal.docx
 │   └── Week-1-Memo.pdf
+|   └── risk-register.csv
+
 │
 ├── notebooks/
 │   └── FinalWeek0_Notebook.ipynb
