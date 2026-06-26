@@ -1,0 +1,36 @@
+Risk Name,Category,Likelihood,Impact,Mitigation,Signal of Success
+Data Leakage from the  Variables (After Triaging),AI-Technical,Medium: Retrospective ED datasets may contain fields such as length of stay and status and clinical decisions that are unavailable at triage time. (Values ordered after triage assessment may have been included during model training if the dataset was not carefully time-gated.),"High:Offline AUC-ROC performance would be misleading, and the real world model could fail when used with only triage available data.","The data science lead will complete a pre-deployment feature audit. Every input variable is verified to be available at the moment a patient registers: i.e. prior to any clinical assessment or lab order. Features failing this test are dropped regardless of their offline importance score. Only variables available at the moment of triage, such as age, chief complaint, vital signs, triage category and arrival method, may be included. ",Feature audit confirms 100% of model inputs are available before or during the triage decision.
+LLM Hallucination in Triage Notes,AI-Technical,"Medium: If AI-generated documentation or explanation text is added later, the system could produce plausible but incorrect clinical summaries.",High: Incorrect symptoms or risk explanations that could enterthe clinical record and influence the follow up care for patient.,"No AI-generated triage note or explanation may eneter the EHR without clinician confirmation. The nurse must approve, edit or reject the generated text before saving. ",Weekly audit shows 100% clinician cnfirmation for Ai-generated notes before EHR entry. 100% accuracy in notes.
+Overfitting to Mercer Single Site Data,AI-Technical,"High: The preliminary model is based on Mercer data, so it may learn local documentation patterns instead of general clinical risk patterns.",High: A model that looks accurate at Mercer may misclassify patients at rural or lower resource hospitals.,"Before national rollout, the Ministry must require external validation on at least one additional hospital dataset. Deployment should pause if external recall differs by more than 3 percentage points from Mercer?s recall.",External validation recall and AUC-ROC remain within agreed thresholds before each rollout stage.
+Differential Miscalculation for Atypical Presentations,Equity,"Medium: Some groups, such as elderly women with atypical cardiac symptoms, may present differently from the dominant training pattern.","High: Children under 12 and patients over 70 are systematically assigned lower triage levels than warranted, resulting in missed time-critical interventions with potentially fatal outcomes within 1?4 hours of presentation.
+","Before deployment, the data scientist produces a subgroup performance report disaggregated by age band (<12, 13?59, 60?74, 75+) and sex. If any subgroup's Level 1 recall is >5 pp below the overall recall, deployment is paused and the model is retrained with age-stratified oversampling or a paediatric-specific feature set.",Quarterly subgroup review shows no recall gap above 5 percentage points for high risk groups.
+Infrastructure Disparity Across Sites,Equity,"High: A tool that works at Mercer may not function reliably at smaller or rural facilities with fewer devices or weaker connectivity.
+
+",High: Lower resource hospitals may receive a less reliable version of the safety intervention.,"A site readiness checklist (connectivity SLA, EHR compatibility, IT support contact, offline fallback SOP) is completed and signed off by the Ministry's IT team before deployment to each site. An offline-capable version of the triage scoring tool (using a simplified rule-based fallback) is documented and drilled quarterly.",100% of deployment sites pass readiness checklist before go-live; offline fallback drilled at each site at least twice per year; no site operates the AI system beyond 48 hours without a confirmed IT support contact.
+Consent and Patient Communication Gap,Ethical,Medium: Patients may not know that AI contributed to their triage assessment.,Low: Lack of disclosure could weaken patient trust and raise ethical concerns about transparency.,"The hospital will provide plainlanguage signage and patient information explaining that AI supports, but does not replace, clinician judgement. A patient advocate group must review the wording before deployment.",Patient facing disclosure is approved before go-live and patient feedback shows understanding of the AI's limited role.
+Erosion of Clinical Judgement,Ethical,Medium: Long term use may reduce independent triage skills if staff rely on the AI for routine decisions.,Medium: Staff may become less prepared to triage safely during downtime or unusual clinical presentations.,All triage qualified staff will complete an annual model blinded triage assessment where they make decisions without AI support. Staff who score below the pass threshold receive retraining.,Annual model blinded triage assessment pass rate remains at or above 85%.
+Alert Fatigue,Operational,"High: If the system flags too many cases, clinicians may begin ignoring alerts.",Medium: Important escalation alerts may be missed because staff become desensitised to frequent low-value warnings.,"The clinical safety lead will review alert action rates weekly during the pilot. If fewer than 30% of alerts result in a documented clinical action for two consecutive weeks, thresholds must be recalibrated.",Alert action rate ò60% sustained across all shifts; no recalibrations triggered more than once per quarter after the first 90 day stabilisation period.
+Clinician Over-Reliance,Operational,Medium: A high performing model may encourage staff to accept recommendations without independent clinical judgement,High: Patients whose symptoms do not match common training patterns may be incorrectly triaged.,"The system must display AI output as decision support, not an order. Clinicians must document agreement or override, and sudden drops in override rate will trigger review.","Override rate stays within an expected range, and sudden drops are reviewed by the clinical governance team"
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
