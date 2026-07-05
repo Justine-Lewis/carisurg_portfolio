@@ -1,0 +1,10 @@
+feature,plausible_low,plausible_high,below_range,above_range,missing_count,total_outside_range
+age,0,120,0,0,0,0
+esi,1,5,0,0,0,0
+triage_vital_hr,40,180,21,11,0,32
+triage_vital_sbp,70,250,45,5,0,50
+triage_vital_dbp,30,150,7,21,0,28
+triage_vital_rr,8,40,0,14,0,14
+triage_vital_o2,70,100,7,0,0,7
+triage_vital_temp,94,104,6,9,0,15
+triage_glucose,40,600,26,164,0,190

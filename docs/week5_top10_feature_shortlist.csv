@@ -1,0 +1,11 @@
+rank,feature,one_sentence_reason
+1,age,Older patients may have less physiological reserve and showed the strongest simple association with ESI.
+2,triage_vital_o2_device,Use of an oxygen device suggests respiratory support needs and was strongly associated with higher acuity.
+3,cc_chestpain,Chest pain is a high-risk ED presentation because it may indicate acute coronary syndrome or other cardiac emergencies.
+4,triage_vital_o2,Low oxygen saturation directly reflects respiratory compromise.
+5,cc_shortnessofbreath,Shortness of breath may indicate respiratory or cardiac deterioration.
+6,cc_alteredmentalstatus,"Altered mental status can reflect neurologic, metabolic, septic, or toxicologic emergencies."
+7,triage_glucose,Extremely low or high glucose can require urgent intervention.
+8,triage_vital_sbp,"Systolic blood pressure helps flag shock, bleeding, dehydration, or severe cardiovascular stress."
+9,triage_vital_hr,"Heart rate reflects pain, fever, anxiety, shock, arrhythmia, or physiologic stress."
+10,triage_vital_rr,Respiratory rate is an early warning sign for clinical deterioration.
