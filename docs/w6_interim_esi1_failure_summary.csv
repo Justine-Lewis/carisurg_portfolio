@@ -1,0 +1,3 @@
+model,ESI1_test_cases,ESI1_recall,ESI1_miss_rate
+Logistic regression,16,0.625,0.375
+Decision tree,16,0.438,0.562
